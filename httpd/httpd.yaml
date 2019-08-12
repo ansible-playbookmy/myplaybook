@@ -1,0 +1,16 @@
+---
+- hosts: servers
+  user: root
+  become: yes
+  tasks: 
+  - name: update nginx
+    shell: echo "welcome To Ansible Again" >/var/www/html/index.html; curl -s http://192.168.1.5
+    notify: 
+    - restart nginx
+    register: shell_result
+
+  - debug:
+      var: shell_result.stdout_lines
+  handlers:
+  - name: restart nginx
+    service: name=nginx state=reloaded
