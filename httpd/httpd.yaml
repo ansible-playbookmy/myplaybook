@@ -13,4 +13,4 @@
       var: shell_result.stdout_lines
   handlers:
   - name: restart nginx
-    service: name=nginx state=reloaded
+    service: name=nginx state=reloadedee
